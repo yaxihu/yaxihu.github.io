@@ -15,9 +15,41 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
   <style>
+    :root {
+      --accent: #00766e;       /* Max Planck teal */
+      --accent-dark: #005a54;
+      --accent-tint: #e3f1ef;
+      --highlight: #8a5a00;    /* amber, for awards */
+      --highlight-tint: #fbefd6;
+    }
+    a { color: var(--accent-dark); }
+    a:hover, a:focus { color: var(--accent); }
+
+    .navbar-inverse { background-color: var(--accent); border-color: var(--accent-dark); }
+    .navbar-inverse .navbar-nav > li > a { color: #e6f4f2; }
+    .navbar-inverse .navbar-nav > li > a:hover,
+    .navbar-inverse .navbar-nav > li > a:focus { color: #fff; }
+    .navbar-inverse .navbar-toggle { border-color: #e6f4f2; }
+    .navbar-inverse .navbar-toggle:hover,
+    .navbar-inverse .navbar-toggle:focus { background-color: var(--accent-dark); }
+    .navbar-inverse .navbar-collapse { border-color: var(--accent-dark); }
+
+    .sidebar { margin-top: 20px; }
+    .profile { width: 100%; max-width: 260px; border-radius: 8px; margin-bottom: 14px; }
+    .name { font-family: 'Oswald', sans-serif; font-size: 32px; color: var(--accent); margin-bottom: 12px; }
+    h2#research { color: var(--accent); padding-bottom: 6px; border-bottom: 2px solid var(--accent-tint); }
+
     .theme { margin-top: 20px; }
-    .theme h4 { font-weight: bold; }
+    .theme h4 { font-weight: bold; border-left: 4px solid var(--accent); padding-left: 10px; }
     li.paper { margin-bottom: 6px; }
+
+    .venue {
+      display: inline-block; padding: 0 7px; border-radius: 10px;
+      font-size: 85%; font-weight: 600; white-space: nowrap;
+      background: var(--accent-tint); color: var(--accent-dark);
+    }
+    .venue.oral { background: var(--highlight-tint); color: var(--highlight); }
+    .venue.preprint { background: #eef0f2; color: #555; }
   </style>
 </head>
 <body>
@@ -52,73 +84,65 @@
 
         <div class="row">
 
-            <!-- Entries Column -->
-            <div class="col-md-8">
+            <!-- Sidebar: photo and contact. It comes first in the markup so phones show it on top;
+                 col-md-push-8 / col-md-pull-4 keep it on the right on wider screens. -->
+            <div class="col-md-4 col-md-push-8 sidebar">
+                <img class="profile" src="photo.jpg" alt="Yaxi Hu">
+                <div class="name"><b>Yaxi Hu</b></div>
+                <p><b>yaxi.hu@tuebingen.mpg.de</b></p>
+                <p>Empirical Inference Department<br>
+                Max Planck Institute for Intelligent Systems</p>
+                <p><a href="https://scholar.google.com/citations?user=buGS_OsAAAAJ&hl=en">Google Scholar</a></p>
+                <!-- <p><a href="#">Twitter</a></p>
+                <p><a href="#">LinkedIn</a></p> -->
+            </div>
 
-                <!-- Main Image (photo.gif is not in the repo yet; uncomment once it is) -->
-                <!-- <img class="img-responsive" src="photo.gif" alt=""><br> -->
+            <!-- Entries Column -->
+            <div class="col-md-8 col-md-pull-4">
 
                 <div style="margin-top:3%; text-align:justify;">                
                     <p>I'm an ELLIS PhD student at the <a href = "https://ei.is.mpg.de/">Max Planck Institute for Intelligent Systems</a>, supervised by <a href = "https://ei.is.mpg.de/person/bs">Prof. Bernhard Schölkopf</a>, <a href = "https://sml.inf.ethz.ch/group/fannyy/">Prof. Fanny Yang</a>, and <a href = "https://amartya18x.github.io/">Prof. Amartya Sanyal</a>. Prior to this, I completed an M.S. in Statistics at <a href = "https://ethz.ch/en.html">ETH Zürich</a> and a B.S. in Mathematics and Economics at <a href = "https://www.ntu.edu.sg/">Nanyang Technological University</a>.
                     </p>
-                    <p>I am interested in trustworthy machine learning, with a focus on privacy. My work follows three directions: quantifying privacy risks and guarantees across the entire learning pipeline; designing algorithms that provide differential privacy guarantees without hurting the model's other requirements, such as accuracy, fairness and alignment; and making sure people can delete their data effectively, even after a model is deployed.
+                    <p>I am interested in trustworthy machine learning, with a focus on privacy. My work follows three directions: quantifying privacy risks and guarantees across the entire learning pipeline; designing algorithms that provide differential privacy guarantees without hurting the model's other requirements, such as accuracy, fairness and alignment; and making sure people can delete their data effectively and efficiently, even after a model is deployed.
                     </p>
                 </div>
 
                 <h2 id="research">Research</h2>
 
                 <div class="theme">
-                    <h4>Quantifying privacy risks across the pipeline</h4>
+                    <h4>Quantifying privacy guarantees across the pipeline</h4>
                     <ul>
-                    <li class="paper"><a href="https://arxiv.org/abs/2403.13041">Provable privacy with non-private pre-processing</a> <b>Yaxi Hu</b>, Amartya Sanyal, Bernhard Schölkopf @ ICML'2024</li>
-                    <li class="paper"><a href="https://arxiv.org/abs/2601.21719">LoRA and Privacy: When Random Projections Help (and When They Don't)</a> <b>Yaxi Hu</b>, Johanna Düngler, Bernhard Schölkopf, Amartya Sanyal. Preprint</li>
+                    <li class="paper"><a href="https://arxiv.org/abs/2601.21719">LoRA and Privacy: When Random Projections Help (and When They Don't)</a> <b>Yaxi Hu*</b>, Johanna Düngler*, Bernhard Schölkopf, Amartya Sanyal <span class="venue preprint">Preprint</span></li>
+                    <li class="paper"><a href="https://arxiv.org/abs/2403.13041">Provable privacy with non-private pre-processing</a> <b>Yaxi Hu</b>, Amartya Sanyal, Bernhard Schölkopf <span class="venue">ICML 2024</span></li>
                     </ul>
                 </div>
 
                 <div class="theme">
                     <h4>Privacy without sacrificing accuracy, fairness or alignment</h4>
                     <ul>
-                    <li class="paper"><a href="https://arxiv.org/abs/2306.03962">PILLAR: How to make semi-private learning more effective</a> Francesco Pinto, <b>Yaxi Hu</b>, Fanny Yang, Amartya Sanyal @ SaTML'2024</li>
-                    <li class="paper"><a href="https://proceedings.mlr.press/v180/sanyal22a/sanyal22a.pdf">How unfair is private learning?</a> Amartya Sanyal*, <b>Yaxi Hu*</b>, Fanny Yang (Oral) @ UAI'2022</li>
-                    <li class="paper"><a href="https://arxiv.org/abs/2501.18532">Differentially Private Steering for Large Language Model Alignment</a> Anmol Goel, <b>Yaxi Hu</b>, Iryna Gurevych, Amartya Sanyal @ ICLR'2025</li>
+                    <li class="paper"><a href="https://arxiv.org/abs/2501.18532">Differentially Private Steering for Large Language Model Alignment</a> Anmol Goel, <b>Yaxi Hu</b>, Iryna Gurevych, Amartya Sanyal <span class="venue">ICLR 2025</span></li>
+                    <li class="paper"><a href="https://arxiv.org/abs/2306.03962">PILLAR: How to make semi-private learning more effective</a> Francesco Pinto*, <b>Yaxi Hu*</b>, Fanny Yang, Amartya Sanyal <span class="venue">SaTML 2024</span></li>
+                    <li class="paper"><a href="https://proceedings.mlr.press/v180/sanyal22a/sanyal22a.pdf">How unfair is private learning?</a> Amartya Sanyal*, <b>Yaxi Hu*</b>, Fanny Yang <span class="venue">UAI 2022</span> <span class="venue oral">Oral</span></li>
                     </ul>
                 </div>
 
                 <div class="theme">
                     <h4>Giving people control over their data</h4>
                     <ul>
-                    <li class="paper"><a href="https://openreview.net/forum?id=lyvCVfTdiY">Online Learning and Unlearning: Efficient Algorithms with Near-Optimal Regret Guarantees</a> <b>Yaxi Hu</b>, Bernhard Schölkopf, Amartya Sanyal @ TMLR'2026</li>
+                    <li class="paper"><a href="https://openreview.net/forum?id=lyvCVfTdiY">Online Learning and Unlearning: Efficient Algorithms with Near-Optimal Regret Guarantees</a> <b>Yaxi Hu</b>, Bernhard Schölkopf, Amartya Sanyal <span class="venue">TMLR 2026</span></li>
                     </ul>
                 </div>
 
                 <div class="theme">
                     <h4>Beyond privacy: reliability under distribution shift</h4>
                     <ul>
-                    <li class="paper"><a href="https://arxiv.org/abs/2406.19049">Accuracy on the wrong line: On the pitfalls of noisy data for out-of-distribution generalisation</a> Amartya Sanyal, <b>Yaxi Hu</b>, Yaodong Yu, Yian Ma, Yixin Wang, Bernhard Schölkopf @ AISTATS'2025</li>
+                    <li class="paper"><a href="https://arxiv.org/abs/2406.19049">Accuracy on the wrong line: On the pitfalls of noisy data for out-of-distribution generalisation</a> Amartya Sanyal, <b>Yaxi Hu</b>, Yaodong Yu, Yian Ma, Yixin Wang, Bernhard Schölkopf <span class="venue">AISTATS 2025</span></li>
                     </ul>
                 </div>
 
-                <p class="text-muted">* equal contribution. Full list on <a href="https://scholar.google.com/citations?user=buGS_OsAAAAJ&hl=en">Google Scholar</a>.</p>
+                <p class="text-muted">* equal contribution</p>
             </div>
 
-            <!-- Contact Info on the Sidebar -->
-            <div class="col-md-4">
-                <div style="font-family: 'Oswald', sans-serif; font-size: 32px;"><b>Yaxi Hu</b></div><br>
-                <p><b>yaxi.hu@tuebingen.mpg.de</b><br>
-                <p>Empirical Inference Department<br>
-                Max Planck Institute for Intelligent Systems<br>
-                </p>
-            </div>
-            
-            
-            <!-- Links on the Sidebar -->
-            <div class="col-md-4" style="margin-top:2%">
-              <dd><a href="https://scholar.google.com/citations?user=buGS_OsAAAAJ&hl=en">Google Scholar</a></dd> 
-              <!-- <dd><a href="#">Twitter</a></dd>
-              <dd><a href="#">LinkedIn</a></dd> -->
-            </div>
-
-            
         </div>
 
 
